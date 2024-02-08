@@ -8,7 +8,8 @@ function Message() {
         data: [
             { id: 1, text: "hello", visible: true },
             { id: 2, text: "hi", visible: false },
-            { id: 3, text: "hello2", visible: false }
+            { id: 3, text: "hello2", visible: false },
+            { id: 4, text: "test", visible: false }
         ]
     };
 
@@ -30,30 +31,22 @@ function Message() {
     }, [balloons]);
 
     const handleClick = (id) => {
-        const lastCharacter = id.toString().slice(-1); // 현재 아이디의 마지막 글자 추출
-        const newId = parseInt(lastCharacter); // 숫자로 형변환
         const newData = balloons.data.map((balloon, index) => {
             if (balloon.id === id) {
-                // 클릭한 말풍선부터 마지막까지의 가시성을 true로 설정
-                const updatedBalloons = [...balloons.data];
-                for (let i = index; i < updatedBalloons.length; i++) {
-                    // 이미 visible한 말풍선은 pass
-                    // updatedBalloons[i].id = newId;
-                    if (updatedBalloons[i].visible) continue;
-                    // 마지막 말풍선인 경우 예외 처리
-                    if (i === updatedBalloons.length - 1){ 
-                        updatedBalloons[i].visible = true;
-                        break };
-                    updatedBalloons[i].visible = true;
-                    // console.log(updatedBalloons[i])
-                }
-                console.log(updatedBalloons)
-                return updatedBalloons;
+                return { ...balloon, visible: true };
+            } else if (index === id && index < balloons.data.length - 1) {
+                // 클릭한 말풍선의 다음 말풍선만 가시성을 변경
+                return { ...balloon, visible: true };
+            } else if (index < id && index < balloons.data.length - 1) {
+                // 기존 말풍선 가시성 유지
+                return { ...balloon, visible: true };
+            } else if (id === balloons.data.length - 1) {
+                // 마지막 말풍선일 때 true로 유지
+                return { ...balloon, visible: true };
+            } 
+             else {
+                return { ...balloon, visible: false };
             }
-            else{
-                return balloon;
-            }
-            
         });
         setBalloons({ data: newData });
     };
@@ -66,9 +59,6 @@ function Message() {
                     key={balloon.id}
                     id={`balloon-${balloon.id}`}
                     style={{
-                        position: "absolute",
-                        top: "20px",
-                        left: "20px",
                         backgroundColor: "#FFFA82",
                         padding: "10px",
                         display: balloon.visible ? "block" : "none"
