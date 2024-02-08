@@ -6,10 +6,10 @@ function Message() {
     // 초기 말풍선 데이터
     const initialBalloons = {
         data: [
-            { id: 1, text: "hello", visible: true },
-            { id: 2, text: "hi", visible: false },
-            { id: 3, text: "hello2", visible: false },
-            { id: 4, text: "test", visible: false }
+            { id: 1, text: "안녕, 오빠.", visible: true },
+            { id: 2, text: "300일 때도 비슷한 말을 했던 거 같긴 한데, \n우리가 벌써 만난 지 1년이라니 너무 신기하지 않아? ", visible: false },
+            { id: 3, text: "오빠는 이 메시지를 볼 때쯤이면, 여기에 회신을 못하겠지만", visible: false },
+            { id: 4, text: "나는 이 텍스트를 오빠가 보고만 있는 걸로도 충분히 행복해.", visible: false }
         ]
     };
 
@@ -43,33 +43,48 @@ function Message() {
             } else if (id === balloons.data.length - 1) {
                 // 마지막 말풍선일 때 true로 유지
                 return { ...balloon, visible: true };
-            } 
-             else {
+            }
+            else {
                 return { ...balloon, visible: false };
             }
         });
         setBalloons({ data: newData });
     };
-    
+
 
     return (
-        <div style={{ backgroundColor: "black", padding: "20px", position: "relative", height: containerHeight }}>
-            {balloons.data.map((balloon) => (
-                <div
-                    key={balloon.id}
-                    id={`balloon-${balloon.id}`}
-                    style={{
-                        backgroundColor: "#FFFA82",
-                        padding: "10px",
-                        display: balloon.visible ? "block" : "none"
-                    }}
-                    onClick={() => handleClick(balloon.id)} // 클릭 시 가시성 토글
-                >
-                    <p style={{ color: "black" }}>{balloon.text}</p>
-                </div>
-            ))}
+        <div style={{ height: "100vh", backgroundColor: "black"}}>
+            <div style={{ padding: "20px", position: "relative", height: containerHeight }}>
+                {balloons.data.map((balloon) => (
+                    <div key={balloon.id}>
+                        <div
+                            id={`balloon-${balloon.id}`}
+                            style={{
+                                display: balloon.visible ? "block" : "none",
+                                position: "relative" // 부모 요소의 position을 설정하여 자식 요소의 position을 조절할 수 있도록 함
+                            }}
+                            onClick={() => handleClick(balloon.id)} // 클릭 시 가시성 토글
+                        >
+                            <p style={{ color: "white" }}>CC</p>
+                            <div
+                                style={{
+                                    backgroundColor: "#FFFA82",
+                                    padding: "10px 30px 10px 10px",
+                                    borderRadius: "10px",
+                                    marginBottom: "1%",
+                                }}
+                            >
+                                <p style={{ color: "black" }}>{balloon.text}</p>
+                            </div>
+
+                        </div>
+                    </div>
+                ))}
+            </div>
         </div>
+
     );
+
 }
 
 export default Message;
