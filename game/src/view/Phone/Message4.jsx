@@ -6,39 +6,64 @@ function Message() {
     const [containerHeight, setContainerHeight] = useState(0);
     const [showModal, setShowModal] = useState(false);
     const [modalIndex, setModalIndex] = useState(0);
+    const [modalTextIndex, setModalTextIndex] = useState(0);
+    const [modalText, setModalText] = useState("");
+    const [showNextButton, setShowNextButton] = useState(false);
 
     const navigate = useNavigate();
 
-    const handleNextClick = () => {
-        // Add your logic here based on button click
-        navigate("/msg2")
+    const handleNextModal = () => {
+        console.log(modalTextIndex)
+        if (modalTextIndex === 0) {
+            setModalTextIndex(1);
+            setShowNextButton(true);
+        } 
+        else if (modalTextIndex === 1){
+            setShowNextButton(true);
+            handleFinalYesClick();
+        }
+        else {
+            setShowModal(false);
+            setShowNextButton(false);
+        }
     };
 
+    const handleYesClick = () => {
+        if (modalIndex === 0) {
+            setModalText(modalTexts2[0]);
+            setModalIndex(1);
+        } else {
+            handleNextModal();
+        }
+    };
 
-    // 초기 말풍선 데이터
+    const handleNoClick = () => {
+        navigate("/msg4");
+    };
+
+    const handleFinalYesClick = () => {
+        navigate("/msg4");
+    };
+
     const initialBalloons = {
         data: [
-            { id: 1, text: "이 문자에 답장하려고?", visible: true },
-            { id: 2, text: "미안하지만, 그렇게까지 하기엔 내가 개발 실력이 뛰어나질 못해. ", visible: false },
-            { id: 3, text: "양방향 소통을 할 수 있게끔 구현하기에는 시간도 꽤 부족하고…", visible: false },
-            { id: 4, text: "아, 계속 서론이 길어지네. 미안해.", visible: false }
+            { id: 1, text: "그래서 말인데, 이번에 주려는 거는 조금 특별해서 오빠가 조금 나를 도와줘야 되는 게 있어.", visible: true },
+            { id: 2, text: "나를 도와줄 수 있을까?", visible: false }
         ]
     };
 
-    // 모달 텍스트 데이터
     const modalTexts = [
-        "음… 나와 내 여자친구는 둘 다 개발자이다.",
-        "그러다 보니 종종 개발 관련한 이야기를 할 때도 있다.",
-        "그런데 웃긴 것이 어느 때는 이런 개발 이야기를 해서 통하는 게 많다고 좋아하는데 ",
-        "또 어느 때는 개발 이야기를 하면, 일하고 왔는데 일의 연장선 같다고 엄청 싫어한다.",
-        "어느 장단에 맞추라는 건지…"
+        "그녀를 도와주시겠습니까?"
     ];
 
-    // 말풍선 상태 및 가시성 변경 함수
+    const modalTexts2 = [
+        "이상하다. 이럴 때만 단답형으로 답장을 할 수 있단 말이지?",
+        "이쯤되면 그녀가 답정너가 아닌가 싶지만, 주려고 하는 선물이 궁금해서 예라고 응답했다."
+    ];
+
     const [balloons, setBalloons] = useState(initialBalloons);
 
     useEffect(() => {
-        // 컨테이너의 높이를 말풍선 위치에 따라 동적으로 조정
         const maxHeight = Math.max(
             ...balloons.data.map((balloon) => {
                 if (balloon.visible) {
@@ -48,7 +73,7 @@ function Message() {
                 return 0;
             })
         );
-        setContainerHeight(maxHeight + 40); // 여유 공간 추가
+        setContainerHeight(maxHeight + 40);
     }, [balloons]);
 
     const handleClick = (id) => {
@@ -63,28 +88,18 @@ function Message() {
             } else if (index < id && index < balloons.data.length - 1) {
                 return { ...balloon, visible: true };
             } else if (id === balloons.data.length - 1) {
-                // 클릭한 말풍선이 마지막 말풍선일 때 
                 return { ...balloon, visible: true };
-            } 
-            else {
+            } else {
                 return { ...balloon, visible: false };
             }
         });
         setBalloons({ data: newData });
     };
 
-    const handleNextModal = () => {
-        if (modalIndex < modalTexts.length - 1) {
-            setModalIndex(prevIndex => prevIndex + 1);
-        }
-        else if (modalIndex === modalTexts.length - 1){
-            handleNextClick();
-        } 
-        else {
-            setShowModal(false);
-            setModalIndex(0);
-        }
-    };
+    useEffect(() => {
+        setModalText(modalIndex === 0 ? modalTexts[0] : modalTexts2[modalTextIndex]);
+        setShowNextButton(modalIndex === 1 && modalTextIndex <= modalTexts2.length - 1);
+    }, [modalIndex, modalTextIndex]);
 
     return (
         <div style={{ height: "100vh", backgroundColor: "black" }}>
@@ -95,9 +110,9 @@ function Message() {
                             id={`balloon-${balloon.id}`}
                             style={{
                                 display: balloon.visible ? "block" : "none",
-                                position: "relative" // 부모 요소의 position을 설정하여 자식 요소의 position을 조절할 수 있도록 함
+                                position: "relative"
                             }}
-                            onClick={() => handleClick(balloon.id)} // 클릭 시 가시성 토글
+                            onClick={() => handleClick(balloon.id)}
                         >
                             <p style={{ color: "white" }}>CC</p>
                             <div
@@ -133,13 +148,31 @@ function Message() {
                         borderRadius: '10px',
                         textAlign: 'center',
                     }}>
-                        <p>{modalTexts[modalIndex]}</p>
-                        <Button
-                            style={{ fontSize: "80%" }}
-                            variant="light"
-                            onClick={handleNextModal}>
-                            {modalIndex < modalTexts.length - 1 ? '다음' : '닫기'}
-                        </Button>
+                        <p>{modalText}</p>
+                        {showNextButton && (
+                            <Button
+                                style={{ fontSize: "80%" }}
+                                variant="light"
+                                onClick={handleNextModal}>
+                                다음
+                            </Button>
+                        )}
+                        {!showNextButton && (
+                            <div>
+                                <Button
+                                    style={{ fontSize: "80%", marginRight: '10px' }}
+                                    variant="light"
+                                    onClick={handleYesClick}>
+                                    예
+                                </Button>
+                                <Button
+                                    style={{ fontSize: "80%" }}
+                                    variant="light"
+                                    onClick={handleNoClick}>
+                                    아니오
+                                </Button>
+                            </div>
+                        )}
                     </div>
                 </div>
             )}
