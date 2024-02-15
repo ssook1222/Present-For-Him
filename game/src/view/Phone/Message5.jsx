@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Row } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
 
 function Message() {
@@ -11,27 +11,26 @@ function Message() {
 
     const handleNextClick = () => {
         // Add your logic here based on button click
-        navigate("/msg3")
+        navigate("/msg5")
     };
 
 
     // 초기 말풍선 데이터
     const initialBalloons = {
         data: [
-            { id: 1, text: "이 문자에 답장하려고?", visible: true },
-            { id: 2, text: "미안하지만, 그렇게까지 하기엔 내가 개발 실력이 뛰어나질 못해. ", visible: false },
-            { id: 3, text: "양방향 소통을 할 수 있게끔 구현하기에는 시간도 꽤 부족하고…", visible: false },
-            { id: 4, text: "아, 계속 서론이 길어지네. 미안해.", visible: false }
+            { id: 1, text: "고마워, 오빠.", visible: true },
+            { id: 2, text: "1년 간 오빠를 만나면서, 많은 추억들이 곳곳에 쌓여있더라고.", visible: false },
+            { id: 3, text: "그 중에서 내게 가장 인상 깊었던 장소였던 곳에 가줄 수 있을까?", visible: false },
+            { id: 4, text: "거기에 내가 주고자 하는 선물을 마련해 놨거든. 오빠라면 잘 알아챌 거라고 믿어.", visible: false }
         ]
     };
 
     // 모달 텍스트 데이터
     const modalTexts = [
-        "음… 나와 내 여자친구는 둘 다 개발자이다.",
-        "그러다 보니 종종 개발 관련한 이야기를 할 때도 있다.",
-        "그런데 웃긴 것이 어느 때는 이런 개발 이야기를 해서 통하는 게 많다고 좋아하는데 ",
-        "또 어느 때는 개발 이야기를 하면, 일하고 왔는데 일의 연장선 같다고 엄청 싫어한다.",
-        "어느 장단에 맞추라는 건지…"
+        "이럴수가.",
+        "너무 나에 대한 믿음이 강한 거 아냐? ",
+        "해당 문자를 끝으로 더 이상 그녀에게서 연락이 오지 않는 것을 확인한 나는…",
+
     ];
 
     // 말풍선 상태 및 가시성 변경 함수
@@ -65,7 +64,7 @@ function Message() {
             } else if (id === balloons.data.length - 1) {
                 // 클릭한 말풍선이 마지막 말풍선일 때 
                 return { ...balloon, visible: true };
-            } 
+            }
             else {
                 return { ...balloon, visible: false };
             }
@@ -77,9 +76,9 @@ function Message() {
         if (modalIndex < modalTexts.length - 1) {
             setModalIndex(prevIndex => prevIndex + 1);
         }
-        else if (modalIndex === modalTexts.length - 1){
+        else if (modalIndex === modalTexts.length - 1) {
             handleNextClick();
-        } 
+        }
         else {
             setShowModal(false);
             setModalIndex(0);
@@ -134,12 +133,47 @@ function Message() {
                         textAlign: 'center',
                     }}>
                         <p>{modalTexts[modalIndex]}</p>
-                        <Button
-                            style={{ fontSize: "80%" }}
-                            variant="light"
-                            onClick={handleNextModal}>
-                            {modalIndex < modalTexts.length - 1 ? '다음' : '닫기'}
-                        </Button>
+                        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+                            {
+                                modalIndex < modalTexts.length - 1 &&
+                                <Button
+                                    style={{ fontSize: "80%" }}
+                                    variant="light"
+                                    onClick={handleNextModal}>
+                                    다음
+                                </Button>
+                            }
+
+                            {
+                                modalIndex === modalTexts.length - 1 &&
+                                <div>
+                                    <Row>
+                                        <Button 
+                                            style={{"width": "100%", marginBottom: "3%"}}
+                                            variant="light"
+                                        >
+                                            오목교로 간다
+                                        </Button>
+                                    </Row>
+                                    <Row>
+                                        <Button 
+                                            style={{"width": "100%", marginBottom: "3%"}}
+                                            variant="light"
+                                        >
+                                            광화문으로 간다
+                                        </Button>
+                                    </Row>
+                                    <Row>
+                                        <Button 
+                                            style={{"width": "100%"}}
+                                            variant="light"
+                                        >
+                                            여의도로 간다
+                                        </Button>
+                                    </Row>
+                                </div>
+                            }
+                        </div>
                     </div>
                 </div>
             )}

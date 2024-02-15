@@ -42,7 +42,7 @@ function Message() {
     };
 
     const handleFinalYesClick = () => {
-        navigate("/msg4");
+        navigate("/msg5");
     };
 
     const initialBalloons = {
