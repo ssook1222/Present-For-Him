@@ -14,6 +14,12 @@ function Message() {
         navigate("/msg5")
     };
 
+    const goOmokgyo = () => {
+        // Add your logic here based on button click
+        navigate("/omokgyo")
+    };
+
+
 
     // 초기 말풍선 데이터
     const initialBalloons = {
@@ -151,6 +157,7 @@ function Message() {
                                         <Button 
                                             style={{"width": "100%", marginBottom: "3%"}}
                                             variant="light"
+                                            onClick={goOmokgyo}
                                         >
                                             오목교로 간다
                                         </Button>
