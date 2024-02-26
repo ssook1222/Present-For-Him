@@ -10,6 +10,7 @@ import Message4 from './view/Phone/Message4.jsx';
 import Message5 from './view/Phone/Message5.jsx';
 
 import Omokgyo from './view/Omokgyo/Omokgyo.jsx';
+import HDepartment from './view/Omokgyo/HDepartment.jsx';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route exact path="/msg5" element={<Message5 />} > </Route>
 
         <Route exact path="/omokgyo" element={<Omokgyo />} > </Route>
+        <Route exact path="/Hdepartment" element={<HDepartment />}> </Route>
 
       </Routes>
     </BrowserRouter>

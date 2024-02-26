@@ -3,12 +3,12 @@ import { Button, Row, Modal } from "react-bootstrap";
 
 function HDepartment() {
     const [communicationTextIndex, setCommunicationTextIndex] = useState(0);
+    const [showModal, setShowModal] = useState(false);
 
     const RealTexts = [
         "오목교에 있는 더 현대 백화점으로 갔다.",
         "사실 오목교 근처에 사는 그녀와 놀기 위해 종종 이 곳을 방문하기도 했다.",
-        "특히 이 곳 최상층에 있는 곳은 가끔 들러서 앉아있기에 적합한 곳이고, ",
-        "야외 정원도 규모가 크지는 않지만 제대로 꾸며져 있어 가 볼만 했기 때문이다.",
+        "특히 이 곳 최상층에 있는 곳은 가끔 들러서 앉아있기에 적합한 곳이고, 야외 정원도 규모가 크지는 않지만 제대로 꾸며져 있어 가 볼만 했기 때문이다.",
         "그리고 지하에 있는 현대 식품관도 종종 방문했다.",
         "새로 나온 음료나, 과자, 음식들에 크게 관심이 있는 그녀를 따라 신상품들을 보는 것이 은근히 재밌었기 때문이다.",
         "마지막으로 식당 층. 식당 층은 많이 가보지는 못했으나, ",
@@ -17,7 +17,13 @@ function HDepartment() {
     ];
 
     const handleNextClick = () => {
+        if (communicationTextIndex === RealTexts.length - 1) {
+            // 마지막 텍스트일 경우 모달 창 표시
+            setShowModal(true);
+        } else {
+            // 다음 텍스트의 인덱스로 업데이트
             setCommunicationTextIndex(prevIndex => prevIndex + 1);
+        }
     };
 
     return (
@@ -51,6 +57,12 @@ function HDepartment() {
                     </Button>
                 </div>
             </div>
+
+            <Modal show={showModal} onHide={() => setShowModal(false)} centered>
+                <Modal.Body style={{margin: "auto"}}>
+                    
+                </Modal.Body>
+            </Modal>
         </>
     );
 }
