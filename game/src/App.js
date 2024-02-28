@@ -11,6 +11,7 @@ import Message5 from './view/Phone/Message5.jsx';
 
 import Omokgyo from './view/Omokgyo/Omokgyo.jsx';
 import HDepartment from './view/Omokgyo/HDepartment.jsx';
+import Sotdon from './view/Omokgyo/Sotdon.jsx';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
 
         <Route exact path="/omokgyo" element={<Omokgyo />} > </Route>
         <Route exact path="/Hdepartment" element={<HDepartment />}> </Route>
+        <Route exact path="/Sotdon" element={<Sotdon />}> </Route>
 
       </Routes>
     </BrowserRouter>

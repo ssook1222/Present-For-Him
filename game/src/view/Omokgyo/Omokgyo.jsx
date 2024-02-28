@@ -13,6 +13,11 @@ function Omokgyo() {
         navigate("/Hdepartment")
     };
 
+    const goSotdon = () => {
+        // Add your logic here based on button click
+        navigate("/Sotdon")
+    };
+
 
     const RealTexts = [
         "사실, 오목교는 우리 둘에게 있어 조금 특별한 곳이다.",
@@ -65,17 +70,21 @@ function Omokgyo() {
             </div>
 
             <Modal show={showModal} onHide={() => setShowModal(false)} centered>
-                <Modal.Body style={{margin: "auto"}}>
-                    <h5 style={{textAlign:"center"}}>오목교로 이동한 나는...</h5>
-                    <Row style={{margin: "auto", width:"100%", marginTop:"5%"}}>
-                        <Button 
-                                onClick = {goHdepartment}
-                                variant = "light" 
-                                style = {{textAlign:"center", width:"100%"}}
+                <Modal.Body style={{ margin: "auto" }}>
+                    <h5 style={{ textAlign: "center" }}>오목교로 이동한 나는...</h5>
+                    <Row style={{ margin: "auto", width: "100%", marginTop: "5%" }}>
+                        <Button
+                            onClick={goHdepartment}
+                            variant="light"
+                            style={{ textAlign: "center", width: "100%" }}
                         >오목교 더 현대 백화점으로 간다.</Button>
                     </Row>
-                    <Row style={{margin: "auto", width:"100%", marginTop:"3%"}}>
-                        <Button variant="light" style={{textAlign:"center", width:"100%"}}>오목교 앞 솥뚜껑 삼겹살집으로 간다.</Button>
+                    <Row style={{ margin: "auto", width: "100%", marginTop: "3%" }}>
+                        <Button variant="light"
+                            style={{ textAlign: "center", width: "100%" }}
+                            onClick={goSotdon}>
+                            오목교 앞 솥뚜껑 삼겹살집으로 간다.
+                        </Button>
                     </Row>
                 </Modal.Body>
             </Modal>
