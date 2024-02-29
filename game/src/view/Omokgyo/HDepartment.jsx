@@ -37,6 +37,10 @@ function HDepartment() {
     };
 
     const handleContinueClick = () => {
+        // cnt 변수를 1 증가시키고 웹 스토리지에 저장
+        const cnt = sessionStorage.getItem('cnt') ? parseInt(sessionStorage.getItem('cnt')) + 1 : 1;
+        sessionStorage.setItem('cnt', cnt);
+
         setShowOtherChoice(true);
     };
 
