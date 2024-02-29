@@ -6,12 +6,12 @@ function HDepartment() {
     const [communicationTextIndex, setCommunicationTextIndex] = useState(0);
     const [showModal, setShowModal] = useState(false);
     const [showText, setShowText] = useState(true);
+    const [showOtherChoice, setShowOtherChoice] = useState(false);
 
     const navigate = useNavigate();
 
     const goHdepartment = () => {
-        // Add your logic here based on button click
-        navigate("/Hdepartment")
+        navigate("/Hdepartment");
     };
 
     const RealTexts = [
@@ -26,17 +26,22 @@ function HDepartment() {
 
     const handleNextClick = () => {
         if (communicationTextIndex === RealTexts.length - 1) {
-            // 마지막 텍스트일 경우 모달 창 표시
             setShowModal(true);
         } else {
-            // 다음 텍스트의 인덱스로 업데이트
             setCommunicationTextIndex(prevIndex => prevIndex + 1);
         }
     };
 
-    const handleContinueClick = () => {
-        // "다음" 버튼 클릭 시 다음 모달 단계로 이동
+    const handleModalNextClick = () => {
         setShowText(false);
+    };
+
+    const handleContinueClick = () => {
+        setShowOtherChoice(true);
+    };
+
+    const handleQuitClick = () => {
+        // Implement your logic here
     };
 
     return (
@@ -89,23 +94,23 @@ function HDepartment() {
                             <Button
                                 variant="light"
                                 style={{ textAlign: "center", width: "80%", marginTop: "2%", display: "block", margin: "auto" }}
-                                onClick={handleContinueClick}
+                                onClick={handleModalNextClick}
                             > 다음 </Button>
                         </>
                     )}
 
-                    {!showText && (
+                    {!showText && !showOtherChoice && (
                         <>
-                            <h5 style={{textAlign:"center", marginBottom:"5%"}}>그녀의 편지를 다 읽은 나는...</h5>
-                            <Row style={{margin: "auto", width:"100%", marginTop:"5%"}}>
+                            <h5 style={{ textAlign: "center", marginBottom: "5%" }}>그녀의 편지를 다 읽은 나는...</h5>
+                            <Row style={{ margin: "auto", width: "100%", marginTop: "5%" }}>
                                 <Button
                                     variant="light"
                                     style={{ textAlign: "center", width: "100%", marginTop: "2%", display: "block", margin: "auto" }}
-                                    onClick={handleContinueClick}
+                                    onClick={handleQuitClick}
                                 > 더 이상 이동하지 않고<br></br> 그녀에게 문자로 답장한다. </Button>
                             </Row>
 
-                            <Row style={{margin: "auto", width:"100%", marginTop:"5%"}}>
+                            <Row style={{ margin: "auto", width: "100%", marginTop: "5%" }}>
                                 <Button
                                     variant="light"
                                     style={{ textAlign: "center", width: "100%", marginTop: "2%", display: "block", margin: "auto" }}
@@ -113,6 +118,28 @@ function HDepartment() {
                                 > 다른 곳도 가 본다. </Button>
                             </Row>
                         </>
+                    )}
+
+                    {showOtherChoice && (
+                        <div>
+                            <h4 style={{marginBottom:"2%"}}>어디로 갈까?</h4>
+                            <Row>
+                                <Button
+                                    style={{ "width": "100%", marginBottom: "3%" }}
+                                    variant="light"
+                                >
+                                    광화문으로 간다
+                                </Button>
+                            </Row>
+                            <Row>
+                                <Button
+                                    style={{ "width": "100%" }}
+                                    variant="light"
+                                >
+                                    여의도로 간다
+                                </Button>
+                            </Row>
+                        </div>
                     )}
                 </Modal.Body>
             </Modal>
