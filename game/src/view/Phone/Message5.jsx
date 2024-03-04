@@ -19,6 +19,10 @@ function Message() {
         navigate("/omokgyo")
     };
 
+    const goGhm = () => {
+        // Add your logic here based on button click
+        navigate("/Ghm")
+    };
 
 
     // 초기 말풍선 데이터
@@ -166,6 +170,7 @@ function Message() {
                                         <Button 
                                             style={{"width": "100%", marginBottom: "3%"}}
                                             variant="light"
+                                            onClick={goGhm}
                                         >
                                             광화문으로 간다
                                         </Button>
