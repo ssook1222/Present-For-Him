@@ -1,0 +1,150 @@
+import React, { useState } from "react";
+import { Button, Row, Modal } from "react-bootstrap";
+import { useNavigate } from 'react-router-dom';
+
+function Square() {
+    const [communicationTextIndex, setCommunicationTextIndex] = useState(0);
+    const [showModal, setShowModal] = useState(false);
+    const [showText, setShowText] = useState(true);
+    const [showOtherChoice, setShowOtherChoice] = useState(false);
+
+    const navigate = useNavigate();
+
+    const RealTexts = [
+        "그녀와 거닐었던 광장을 한 번 혼자 산책해보기로 했다.",
+        "이렇게나 넓었던가…? 함께 걸었을 때에도 광장이 어느 정도 면적이 있다는 것을 알기는 했으나, 막상 걸어보니 그 면적이 더 넓게 다가왔다.",
+        "이런저런 생각을 하며 걷다, 그녀에게 고백 비스무리하게 했던 장소에 도착했다.",
+        "그녀는 그 때 내가 ‘그 쪽도 나를 좋아하지 않냐’고 물어본 질문을 굉장히 당황스럽다고 했었다.",
+        "사실 당황하는 모습이 눈에 보이긴 했었다. 그 질문 이후에 바로 자신에게 시간을 조금 달라고 했었으니…",
+        "물론 나는 관대하게 시간을 주긴 했다. 약 5분.",
+        "그제서야 그녀는 자신의 감정에 대해 실토했고, 서로의 마음을 확인할 수 있었다.",
+        "그렇게 생각하던 중 테이블 위에 놓여있는 그녀의 편지를 발견했다."
+    ];
+
+    const handleNextClick = () => {
+        if (communicationTextIndex === RealTexts.length - 1) {
+            setShowModal(true);
+        } else {
+            setCommunicationTextIndex(prevIndex => prevIndex + 1);
+        }
+    };
+
+    const handleModalNextClick = () => {
+        setShowText(false);
+    };
+
+    const handleContinueClick = () => {
+        // 웹 스토리지에서 현재까지의 이동 기록을 가져옴
+        const moves = JSON.parse(sessionStorage.getItem('moves')) || [];
+    
+        // HD를 이동 기록에 추가
+        moves.push('광장');
+    
+        // 웹 스토리지에 업데이트된 이동 기록 저장
+        sessionStorage.setItem('moves', JSON.stringify(moves));
+    
+        setShowOtherChoice(true);
+    };
+
+    const handleQuitClick = () => {
+        // Implement your logic here
+    };
+
+    return (
+        <>
+            <div style={{
+                backgroundImage: 'url("your-background-image-url.jpg")',
+                backgroundSize: "cover",
+                height: "100vh",
+                display: "flex",
+                justifyContent: "flex-end",
+                alignItems: "flex-end",
+                padding: "20px",
+            }}>
+                <div style={{
+                    backgroundColor: "rgba(0, 0, 0, 0.7)",
+                    width: "100%",
+                    height: "30%",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    padding: "10px",
+                    borderRadius: "5px"
+                }}>
+                    <div style={{ color: "#fff", paddingLeft: "10px" }}>{RealTexts[communicationTextIndex]}</div>
+                    <Button
+                        variant="dark"
+                        style={{ padding: "10px 20px", borderRadius: "5px" }}
+                        onClick={handleNextClick}
+                    >
+                        다음
+                    </Button>
+                </div>
+            </div>
+
+            <Modal show={showModal} onHide={() => setShowModal(false)} centered>
+                <Modal.Body style={{ margin: "auto" }}>
+                    {showText && (
+                        <>
+                            <div style={{ padding: "2%" }}>
+                                편지 내용이 추가될 곳입니다.
+                            </div>
+
+                            <Button
+                                variant="light"
+                                style={{ textAlign: "center", width: "80%", marginTop: "2%", display: "block", margin: "auto" }}
+                                onClick={handleModalNextClick}
+                            > 다음 </Button>
+                        </>
+                    )}
+
+                    {!showText && !showOtherChoice && (
+                        <>
+                            <h5 style={{ textAlign: "center", marginBottom: "5%" }}>그녀의 편지를 다 읽은 나는...</h5>
+                            <Row style={{ margin: "auto", width: "100%", marginTop: "5%" }}>
+                                <Button
+                                    variant="light"
+                                    style={{ textAlign: "center", width: "100%", marginTop: "2%", display: "block", margin: "auto" }}
+                                    onClick={handleQuitClick}
+                                > 더 이상 이동하지 않고<br></br> 그녀에게 문자로 답장한다. </Button>
+                            </Row>
+
+                            <Row style={{ margin: "auto", width: "100%", marginTop: "5%" }}>
+                                <Button
+                                    variant="light"
+                                    style={{ textAlign: "center", width: "100%", marginTop: "2%", display: "block", margin: "auto" }}
+                                    onClick={handleContinueClick}
+                                > 다른 곳도 가 본다. </Button>
+                            </Row>
+                        </>
+                    )}
+
+                    {showOtherChoice && (
+                        <div>
+                            <h4 style={{ marginBottom: "2%" }}>어디로 갈까?</h4>
+                            <Row>
+                                <Button
+                                    style={{ "width": "100%", marginBottom: "3%" }}
+                                    variant="light"
+                                >
+                                    광화문으로 간다
+                                </Button>
+                            </Row>
+                            <Row>
+                                <Button
+                                    style={{ "width": "100%" }}
+                                    variant="light"
+                                >
+                                    여의도로 간다
+                                </Button>
+                            </Row>
+                        </div>
+                    )}
+                </Modal.Body>
+            </Modal>
+        </>
+    );
+}
+
+export default Square;
+

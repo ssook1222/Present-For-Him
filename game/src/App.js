@@ -15,6 +15,8 @@ import Ghm from './view/GHM/Ghm.jsx'
 import HDepartment from './view/Omokgyo/HDepartment.jsx';
 import Sotdon from './view/Omokgyo/Sotdon.jsx';
 
+import Square from './view/GHM/Square.jsx';
+
 function App() {
   return (
     <BrowserRouter>
@@ -34,6 +36,7 @@ function App() {
         <Route exact path="/Sotdon" element={<Sotdon />}> </Route>
 
         <Route exact path="/Ghm" element={<Ghm />} > </Route>
+        <Route exact path="/Square" element={<Square />} > </Route>
 
       </Routes>
     </BrowserRouter>

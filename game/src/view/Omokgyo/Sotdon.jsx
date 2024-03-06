@@ -10,11 +10,6 @@ function Sotdon() {
 
     const navigate = useNavigate();
 
-    // const goHdepartment = () => {
-    //     // Add your logic here based on button click
-    //     navigate("/Hdepartment")
-    // };
-
     const RealTexts = [
         "여기야 말로 사귀기 전에 그녀의 플러팅이 정점을 달했던 때가 아닐까.",
         "원래 퇴근 메이트였던 우리는 점차 친해져 갔고, 시간이 나서 한 두 번씩 저녁을 같이 먹기 시작하다가… ",
@@ -41,6 +36,15 @@ function Sotdon() {
     };
 
     const handleContinueClick = () => {
+        // 웹 스토리지에서 현재까지의 이동 기록을 가져옴
+        const moves = JSON.parse(sessionStorage.getItem('moves')) || [];
+    
+        // HD를 이동 기록에 추가
+        moves.push('솥돈');
+    
+        // 웹 스토리지에 업데이트된 이동 기록 저장
+        sessionStorage.setItem('moves', JSON.stringify(moves));
+    
         setShowOtherChoice(true);
     };
 

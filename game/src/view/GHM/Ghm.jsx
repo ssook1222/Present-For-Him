@@ -9,12 +9,10 @@ function Ghm() {
     const navigate = useNavigate();
 
     const goSquare = () => {
-        // Add your logic here based on button click
         navigate("/Square")
     };
 
     const goWest = () => {
-        // Add your logic here based on button click
         navigate("/West")
     };
 

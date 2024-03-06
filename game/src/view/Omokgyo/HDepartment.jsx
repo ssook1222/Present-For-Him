@@ -10,10 +10,6 @@ function HDepartment() {
 
     const navigate = useNavigate();
 
-    const goHdepartment = () => {
-        navigate("/Hdepartment");
-    };
-
     const RealTexts = [
         "오목교에 있는 더 현대 백화점으로 갔다.",
         "사실 오목교 근처에 사는 그녀와 놀기 위해 종종 이 곳을 방문하기도 했다.",
@@ -37,10 +33,15 @@ function HDepartment() {
     };
 
     const handleContinueClick = () => {
-        // cnt 변수를 1 증가시키고 웹 스토리지에 저장
-        const cnt = sessionStorage.getItem('cnt') ? parseInt(sessionStorage.getItem('cnt')) + 1 : 1;
-        sessionStorage.setItem('cnt', cnt);
-
+        // 웹 스토리지에서 현재까지의 이동 기록을 가져옴
+        const moves = JSON.parse(sessionStorage.getItem('moves')) || [];
+    
+        // HD를 이동 기록에 추가
+        moves.push('현백');
+    
+        // 웹 스토리지에 업데이트된 이동 기록 저장
+        sessionStorage.setItem('moves', JSON.stringify(moves));
+    
         setShowOtherChoice(true);
     };
 
