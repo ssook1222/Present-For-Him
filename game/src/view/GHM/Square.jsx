@@ -36,13 +36,13 @@ function Square() {
     const handleContinueClick = () => {
         // 웹 스토리지에서 현재까지의 이동 기록을 가져옴
         const moves = JSON.parse(sessionStorage.getItem('moves')) || [];
-    
+
         // HD를 이동 기록에 추가
         moves.push('광장');
-    
+
         // 웹 스토리지에 업데이트된 이동 기록 저장
         sessionStorage.setItem('moves', JSON.stringify(moves));
-    
+
         setShowOtherChoice(true);
     };
 
@@ -87,7 +87,14 @@ function Square() {
                     {showText && (
                         <>
                             <div style={{ padding: "2%" }}>
-                                편지 내용이 추가될 곳입니다.
+                                안녕, 오빠. 광장은 우리에게 있어 어떻게 보면 가장 특별한 곳이자, 가장 일상적인 곳이 아닐까 싶어, <br></br>
+                                오빠는 모르겠지만 오빠가 부산에 교정을 받으러 종종 내려 갔을 때 있잖아. <br></br>
+                                아니면 오빠가 SI 프로젝트 때문에 야근해서 나를 볼 수 없을 때나… <br></br>
+                                아무튼 내가 오빠를 만나지 못할 때, 종종 퇴근하고 혼자 오빠 없는 광장을 거닐곤 해. <br></br>
+                                되게 청승맞지 않아? ㅎㅎ… 하지만, 나한테 그만큼 오빠랑 광장을 거니는 그 순간들이 엄청 큰 추억이자 재산이거든. <br></br>
+                                일상 속에서의 그 모습들도, 오빠가 나한테 고백 겸 질문을 했을 때의 그 순간들도. <br></br>
+                                모두 이제는 내 인생 속에서 놓칠 수 없는 하나의 재산이 되었어. <br></br>
+                                그만큼 오빠가 이제는 내 일상 속에 가장 중요한 부분을 차지하고 있다는 의미기도 하겠지?
                             </div>
 
                             <Button
