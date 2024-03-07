@@ -7,6 +7,7 @@ function Square() {
     const [showModal, setShowModal] = useState(false);
     const [showText, setShowText] = useState(true);
     const [showOtherChoice, setShowOtherChoice] = useState(false);
+    const [moves, setMoves] = useState([]);
 
     const navigate = useNavigate();
 
@@ -42,6 +43,8 @@ function Square() {
 
         // 웹 스토리지에 업데이트된 이동 기록 저장
         sessionStorage.setItem('moves', JSON.stringify(moves));
+        const newMoves = [...moves, '광장'];
+        setMoves(newMoves);
 
         setShowOtherChoice(true);
     };
@@ -129,22 +132,39 @@ function Square() {
                     {showOtherChoice && (
                         <div>
                             <h4 style={{ marginBottom: "2%" }}>어디로 갈까?</h4>
-                            <Row>
-                                <Button
-                                    style={{ "width": "100%", marginBottom: "3%" }}
-                                    variant="light"
-                                >
-                                    광화문으로 간다
-                                </Button>
-                            </Row>
-                            <Row>
-                                <Button
-                                    style={{ "width": "100%" }}
-                                    variant="light"
-                                >
-                                    여의도로 간다
-                                </Button>
-                            </Row>
+                            {!moves.includes('서대문') && (
+                                <Row>
+                                    <Button
+                                        style={{ "width": "100%", marginBottom: "3%" }}
+                                        variant="light"
+                                    >
+                                        서대문 방향으로 간다
+                                    </Button>
+                                </Row>
+                            )}
+
+                            {(!moves.includes('솥돈') || !moves.includes('현백')) && (
+                                <Row>
+                                    <Button
+                                        style={{ "width": "100%", marginBottom: "3%" }}
+                                        variant="light"
+                                    >
+                                        오목교로 간다
+                                    </Button>
+                                </Row>
+                            )}
+
+                            {(!moves.includes('오리배') || !moves.includes('유람선')) && (
+                                <Row>
+                                    <Button
+                                        style={{ "width": "100%", marginBottom: "3%" }}
+                                        variant="light"
+                                    >
+                                        여의도로 간다
+                                    </Button>
+                                </Row>
+                            )}
+
                         </div>
                     )}
                 </Modal.Body>
