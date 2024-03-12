@@ -36,6 +36,18 @@ function Sotdon() {
         setShowText(false);
     };
 
+    const goHdepartment = () => {
+        // Add your logic here based on button click
+        navigate("/Hdepartment")
+    };
+
+    const goGhm = () => {
+        // Add your logic here based on button click
+        navigate("/Ghm")
+    };
+
+
+
     const handleContinueClick = () => {
         // 웹 스토리지에서 현재까지의 이동 기록을 가져옴
         const moves = JSON.parse(sessionStorage.getItem('moves')) || [];
@@ -129,11 +141,12 @@ function Sotdon() {
                     {showOtherChoice && (
                         <div>
                             <h4 style={{ marginBottom: "2%" }}>어디로 갈까?</h4>
-                            { (!moves.includes('서대문') || !moves.includes('현백')) && (
+                            { (!moves.includes('서대문') || !moves.includes('광장')) && (
                                 <Row>
                                     <Button
                                         style={{ "width": "100%", marginBottom: "3%" }}
                                         variant="light"
+                                        onClick={{goGhm}}
                                     >
                                         광화문으로 간다
                                     </Button>
@@ -145,6 +158,7 @@ function Sotdon() {
                                     <Button
                                         style={{ "width": "100%", marginBottom: "3%" }}
                                         variant="light"
+                                        onClick={{goHdepartment}}
                                     >
                                         현대백화점으로 간다
                                     </Button>

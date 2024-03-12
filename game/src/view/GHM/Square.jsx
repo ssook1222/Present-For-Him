@@ -11,6 +11,16 @@ function Square() {
 
     const navigate = useNavigate();
 
+    const goOmokgyo = () => {
+        // Add your logic here based on button click
+        navigate("/omokgyo")
+    };
+
+    const goWest = () => {
+        // Add your logic here based on button click
+        navigate("/West")
+    };
+
     const RealTexts = [
         "그녀와 거닐었던 광장을 한 번 혼자 산책해보기로 했다.",
         "이렇게나 넓었던가…? 함께 걸었을 때에도 광장이 어느 정도 면적이 있다는 것을 알기는 했으나, 막상 걸어보니 그 면적이 더 넓게 다가왔다.",
@@ -137,6 +147,7 @@ function Square() {
                                     <Button
                                         style={{ "width": "100%", marginBottom: "3%" }}
                                         variant="light"
+                                        onClick={{goWest}}
                                     >
                                         서대문 방향으로 간다
                                     </Button>
@@ -148,6 +159,7 @@ function Square() {
                                     <Button
                                         style={{ "width": "100%", marginBottom: "3%" }}
                                         variant="light"
+                                        onClick={{goOmokgyo}}
                                     >
                                         오목교로 간다
                                     </Button>
