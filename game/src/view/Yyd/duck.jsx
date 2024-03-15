@@ -51,10 +51,10 @@ function Duck() {
     const handleContinueClick = () => {
         // 웹 스토리지에서 현재까지의 이동 기록을 가져옴
         const moves = JSON.parse(sessionStorage.getItem('moves')) || [];
-    
+
         // HD를 이동 기록에 추가
         moves.push('오리배');
-    
+
         // 웹 스토리지에 업데이트된 이동 기록 저장
         sessionStorage.setItem('moves', JSON.stringify(moves));
         const newMoves = [...moves, '오리배'];
@@ -145,14 +145,15 @@ function Duck() {
 
                     {showOtherChoice && (
                         <div>
-                            <h4 style={{marginBottom:"2%"}}>어디로 갈까?</h4>
-                            { (!moves.includes('서대문') || !moves.includes('광장')) && (
+                            <h4 style={{ marginBottom: "2%" }}>어디로 갈까?</h4>
+                            {(!moves.includes('현백') || !moves.includes('솥돈')) && (
                                 <Row>
                                     <Button
                                         style={{ "width": "100%", marginBottom: "3%" }}
                                         variant="light"
+                                        onClick={{ goOmokgyo }}
                                     >
-                                        광화문으로 간다
+                                        오목교로 간다
                                     </Button>
                                 </Row>
                             )}
@@ -162,7 +163,7 @@ function Duck() {
                                     <Button
                                         style={{ "width": "100%", marginBottom: "3%" }}
                                         variant="light"
-                                        onClick={{goShip}}
+                                        onClick={{ goShip }}
                                     >
                                         유람선 선착장 방향으로 간다
                                     </Button>
@@ -174,7 +175,7 @@ function Duck() {
                                     <Button
                                         style={{ "width": "100%", marginBottom: "3%" }}
                                         variant="light"
-                                        onClick={{goGhm}}
+                                        onClick={{ goGhm }}
                                     >
                                         광화문으로 간다
                                     </Button>

@@ -19,6 +19,9 @@ import Sotdon from './view/Omokgyo/Sotdon.jsx';
 import Square from './view/GHM/Square.jsx';
 import West from './view/GHM/West.jsx';
 
+import Ship from './view/Yyd/Ship.jsx';
+import Duck from './view/Yyd/duck.jsx';
+
 function App() {
   return (
     <BrowserRouter>
@@ -42,6 +45,8 @@ function App() {
         <Route exact path="/West" element={<West />} > </Route>
 
         <Route exact path="/Yyd" element={<Yyd />} > </Route>
+        <Route exact path="/Duck" element={<Duck />} > </Route>
+        <Route exact path="/Ship" element={<Ship />} > </Route>
         
 
       </Routes>
