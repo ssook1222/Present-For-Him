@@ -10,7 +10,8 @@ import Message4 from './view/Phone/Message4.jsx';
 import Message5 from './view/Phone/Message5.jsx';
 
 import Omokgyo from './view/Omokgyo/Omokgyo.jsx';
-import Ghm from './view/GHM/Ghm.jsx'
+import Ghm from './view/GHM/Ghm.jsx';
+import Yyd from './view/Yyd/Yyd.jsx';
 
 import HDepartment from './view/Omokgyo/HDepartment.jsx';
 import Sotdon from './view/Omokgyo/Sotdon.jsx';
@@ -39,6 +40,9 @@ function App() {
         <Route exact path="/Ghm" element={<Ghm />} > </Route>
         <Route exact path="/Square" element={<Square />} > </Route>
         <Route exact path="/West" element={<West />} > </Route>
+
+        <Route exact path="/Yyd" element={<Yyd />} > </Route>
+        
 
       </Routes>
     </BrowserRouter>

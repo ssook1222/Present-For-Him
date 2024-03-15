@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Row, Modal } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
 
-function HDepartment() {
+function Duck() {
     const [communicationTextIndex, setCommunicationTextIndex] = useState(0);
     const [showModal, setShowModal] = useState(false);
     const [showText, setShowText] = useState(true);
@@ -21,14 +21,19 @@ function HDepartment() {
         "그렇게 더 현대 백화점을 이 곳 저 곳 둘러다 보며, 걷던 나는 식당 층에 있는 벤치에 놓여있는 그녀의 편지를 발견했다."
     ];
 
-    const goSotdon = () => {
+    const goShip = () => {
         // Add your logic here based on button click
-        navigate("/Sotdon")
+        navigate("/Ship")
     };
 
-    const goYyd = () => {
+    const goOmokgyo = () => {
         // Add your logic here based on button click
-        navigate("/Yyd")
+        navigate("/omokgyo")
+    };
+
+    const goGhm = () => {
+        // Add your logic here based on button click
+        navigate("/Ghm")
     };
 
     const handleNextClick = () => {
@@ -48,11 +53,11 @@ function HDepartment() {
         const moves = JSON.parse(sessionStorage.getItem('moves')) || [];
     
         // HD를 이동 기록에 추가
-        moves.push('현백');
+        moves.push('오리배');
     
         // 웹 스토리지에 업데이트된 이동 기록 저장
         sessionStorage.setItem('moves', JSON.stringify(moves));
-        const newMoves = [...moves, '현백'];
+        const newMoves = [...moves, '오리배'];
         setMoves(newMoves);
 
         setShowOtherChoice(true);
@@ -152,27 +157,26 @@ function HDepartment() {
                                 </Row>
                             )}
 
-                            {!moves.includes('솥돈') && (
+                            {!moves.includes('유람선') && (
                                 <Row>
                                     <Button
                                         style={{ "width": "100%", marginBottom: "3%" }}
                                         variant="light"
-                                        onClick={{goSotdon}}
+                                        onClick={{goShip}}
                                     >
-                                        솥돈으로 간다
+                                        유람선 선착장 방향으로 간다
                                     </Button>
                                 </Row>
                             )}
 
-                            {(!moves.includes('오리배') || !moves.includes('유람선')) && (
+                            {(!moves.includes('광장') || !moves.includes('서대문역')) && (
                                 <Row>
                                     <Button
                                         style={{ "width": "100%", marginBottom: "3%" }}
                                         variant="light"
-                                        onClick={{goYyd}}
-                                        
+                                        onClick={{goGhm}}
                                     >
-                                        여의도로 간다
+                                        광화문으로 간다
                                     </Button>
                                 </Row>
                             )}
@@ -185,4 +189,4 @@ function HDepartment() {
     );
 }
 
-export default HDepartment;
+export default Duck;

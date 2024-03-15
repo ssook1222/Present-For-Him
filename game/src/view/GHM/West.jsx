@@ -16,6 +16,11 @@ function West() {
         navigate("/omokgyo")
     };
 
+    const goYyd = () => {
+        // Add your logic here based on button click
+        navigate("/Yyd")
+    };
+
     const goSquare = () => {
         // Add your logic here based on button click
         navigate("/Square")
@@ -173,6 +178,7 @@ function West() {
                                     <Button
                                         style={{ "width": "100%", marginBottom: "3%" }}
                                         variant="light"
+                                        onClick={{goYyd}}
                                     >
                                         여의도로 간다
                                     </Button>

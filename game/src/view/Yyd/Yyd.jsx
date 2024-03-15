@@ -2,20 +2,18 @@ import React, { useState } from "react";
 import { Button, Row, Modal } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
 
-function Omokgyo() {
+function Yyd() {
     const [communicationTextIndex, setCommunicationTextIndex] = useState(0);
     const [showModal, setShowModal] = useState(false);
 
     const navigate = useNavigate();
 
-    const goHdepartment = () => {
-        // Add your logic here based on button click
-        navigate("/Hdepartment")
+    const goDuck = () => {
+        navigate("/duck")
     };
 
-    const goSotdon = () => {
-        // Add your logic here based on button click
-        navigate("/Sotdon")
+    const goShip = () => {
+        navigate("/ship")
     };
 
     const RealTexts = [
@@ -70,25 +68,27 @@ function Omokgyo() {
 
             <Modal show={showModal} onHide={() => setShowModal(false)} centered>
                 <Modal.Body style={{ margin: "auto" }}>
-                    <h5 style={{ textAlign: "center" }}>오목교로 이동한 나는...</h5>
+                    <h5 style={{ textAlign: "center" }}>여의도로 이동한 나는...</h5>
                     <Row style={{ margin: "auto", width: "100%", marginTop: "5%" }}>
                         <Button
-                            onClick={goHdepartment}
+                            onClick={goDuck}
                             variant="light"
-                            style={{ textAlign: "center", width: "100%" }}
-                        >오목교 더 현대 백화점으로 간다.</Button>
+                            style={{ textAlign: "center", width: "100%" }}>
+                            유람선 선착장 방향으로 간다.</Button>
                     </Row>
                     <Row style={{ margin: "auto", width: "100%", marginTop: "3%" }}>
                         <Button variant="light"
                             style={{ textAlign: "center", width: "100%" }}
-                            onClick={goSotdon}>
-                            오목교 앞 솥뚜껑 삼겹살집으로 간다.
+                            onClick={goShip}>
+                            오리배 타는 방향으로 간다.
                         </Button>
                     </Row>
                 </Modal.Body>
             </Modal>
         </>
-    );
+    )
+
+
 }
 
-export default Omokgyo;
+export default Yyd;

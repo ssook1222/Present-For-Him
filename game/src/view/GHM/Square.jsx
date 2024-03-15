@@ -16,6 +16,11 @@ function Square() {
         navigate("/omokgyo")
     };
 
+    const goYyd = () => {
+        // Add your logic here based on button click
+        navigate("/Yyd")
+    };
+
     const goWest = () => {
         // Add your logic here based on button click
         navigate("/West")
@@ -171,6 +176,7 @@ function Square() {
                                     <Button
                                         style={{ "width": "100%", marginBottom: "3%" }}
                                         variant="light"
+                                        onClick={{goYyd}}
                                     >
                                         여의도로 간다
                                     </Button>
