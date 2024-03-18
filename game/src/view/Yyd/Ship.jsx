@@ -151,7 +151,7 @@ function Ship() {
                                     <Button
                                         style={{ "width": "100%", marginBottom: "3%" }}
                                         variant="light"
-                                        onClick={{goOmokgyo}}
+                                        onClick={goOmokgyo}
                                     >
                                         오목교로 간다
                                     </Button>
@@ -163,7 +163,7 @@ function Ship() {
                                     <Button
                                         style={{ "width": "100%", marginBottom: "3%" }}
                                         variant="light"
-                                        onClick={{goDuck}}
+                                        onClick={goDuck}
                                     >
                                         오리배 타는 곳 방향으로 간다
                                     </Button>
@@ -175,7 +175,7 @@ function Ship() {
                                     <Button
                                         style={{ "width": "100%", marginBottom: "3%" }}
                                         variant="light"
-                                        onClick={{goGhm}}
+                                        onClick={goGhm}
                                     >
                                         광화문으로 간다
                                     </Button>

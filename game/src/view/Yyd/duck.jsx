@@ -151,7 +151,7 @@ function Duck() {
                                     <Button
                                         style={{ "width": "100%", marginBottom: "3%" }}
                                         variant="light"
-                                        onClick={{ goOmokgyo }}
+                                        onClick={ goOmokgyo }
                                     >
                                         오목교로 간다
                                     </Button>
@@ -163,7 +163,7 @@ function Duck() {
                                     <Button
                                         style={{ "width": "100%", marginBottom: "3%" }}
                                         variant="light"
-                                        onClick={{ goShip }}
+                                        onClick={ goShip }
                                     >
                                         유람선 선착장 방향으로 간다
                                     </Button>
@@ -175,7 +175,7 @@ function Duck() {
                                     <Button
                                         style={{ "width": "100%", marginBottom: "3%" }}
                                         variant="light"
-                                        onClick={{ goGhm }}
+                                        onClick={ goGhm }
                                     >
                                         광화문으로 간다
                                     </Button>

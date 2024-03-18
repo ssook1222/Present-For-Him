@@ -26,6 +26,11 @@ function HDepartment() {
         navigate("/Sotdon")
     };
 
+    const goGhm = () => {
+        // Add your logic here based on button click
+        navigate("/Ghm")
+    };
+
     const goYyd = () => {
         // Add your logic here based on button click
         navigate("/Yyd")
@@ -146,6 +151,7 @@ function HDepartment() {
                                     <Button
                                         style={{ "width": "100%", marginBottom: "3%" }}
                                         variant="light"
+                                        onClick={goGhm}
                                     >
                                         광화문으로 간다
                                     </Button>
@@ -157,7 +163,7 @@ function HDepartment() {
                                     <Button
                                         style={{ "width": "100%", marginBottom: "3%" }}
                                         variant="light"
-                                        onClick={{goSotdon}}
+                                        onClick={goSotdon}
                                     >
                                         솥돈으로 간다
                                     </Button>
@@ -169,7 +175,7 @@ function HDepartment() {
                                     <Button
                                         style={{ "width": "100%", marginBottom: "3%" }}
                                         variant="light"
-                                        onClick={{goYyd}}
+                                        onClick={goYyd}
                                         
                                     >
                                         여의도로 간다

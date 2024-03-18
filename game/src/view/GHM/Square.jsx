@@ -152,7 +152,7 @@ function Square() {
                                     <Button
                                         style={{ "width": "100%", marginBottom: "3%" }}
                                         variant="light"
-                                        onClick={{goWest}}
+                                        onClick={goWest}
                                     >
                                         서대문 방향으로 간다
                                     </Button>

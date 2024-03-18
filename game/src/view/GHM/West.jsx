@@ -154,7 +154,7 @@ function West() {
                                     <Button
                                         style={{ "width": "100%", marginBottom: "3%" }}
                                         variant="light"
-                                        onClick={{goSquare}}
+                                        onClick={goSquare}
                                     >
                                         광장으로 간다
                                     </Button>
@@ -166,7 +166,7 @@ function West() {
                                     <Button
                                         style={{ "width": "100%", marginBottom: "3%" }}
                                         variant="light"
-                                        onClick={{goOmokgyo}}
+                                        onClick={goOmokgyo}
                                     >
                                         오목교로 간다
                                     </Button>
@@ -178,7 +178,7 @@ function West() {
                                     <Button
                                         style={{ "width": "100%", marginBottom: "3%" }}
                                         variant="light"
-                                        onClick={{goYyd}}
+                                        onClick={goYyd}
                                     >
                                         여의도로 간다
                                     </Button>

@@ -45,8 +45,10 @@ function Sotdon() {
         // Add your logic here based on button click
         navigate("/Ghm")
     };
-
-
+    
+    const goYyd = () => {
+        navigate("/Yyd")
+    }
 
     const handleContinueClick = () => {
         // 웹 스토리지에서 현재까지의 이동 기록을 가져옴
@@ -146,7 +148,7 @@ function Sotdon() {
                                     <Button
                                         style={{ "width": "100%", marginBottom: "3%" }}
                                         variant="light"
-                                        onClick={{goGhm}}
+                                        onClick={goGhm}
                                     >
                                         광화문으로 간다
                                     </Button>
@@ -158,7 +160,7 @@ function Sotdon() {
                                     <Button
                                         style={{ "width": "100%", marginBottom: "3%" }}
                                         variant="light"
-                                        onClick={{goHdepartment}}
+                                        onClick={goHdepartment}
                                     >
                                         현대백화점으로 간다
                                     </Button>
@@ -170,6 +172,7 @@ function Sotdon() {
                                     <Button
                                         style={{ "width": "100%", marginBottom: "3%" }}
                                         variant="light"
+                                        onClick={goYyd}
                                     >
                                         여의도로 간다
                                     </Button>
