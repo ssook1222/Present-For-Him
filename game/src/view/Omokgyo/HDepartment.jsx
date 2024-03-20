@@ -146,7 +146,7 @@ function HDepartment() {
                     {showOtherChoice && (
                         <div>
                             <h4 style={{marginBottom:"2%"}}>어디로 갈까?</h4>
-                            { (!moves.includes('서대문') || !moves.includes('광장')) && (
+                            { (!moves.includes('서대문역') || !moves.includes('광장')) && (
                                 <Row>
                                     <Button
                                         style={{ "width": "100%", marginBottom: "3%" }}
