@@ -1,7 +1,10 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Main from './view/Main/Main.jsx';
+
 import Ending1 from './view/Ending1/Ending1.jsx';
+import Ending2 from './view/Ending2/Ending2.jsx';
+import Ending3 from "./view/Ending3/Ending3.jsx"
 
 import Message1 from './view/Phone/Message1.jsx';
 import Message2 from './view/Phone/Message2.jsx';
@@ -29,6 +32,8 @@ function App() {
         <Route exact path="/" element={<Main />} > </Route>
 
         <Route exact path="/ending1" element={<Ending1 />} > </Route>
+        <Route exact path="/ed2" element={<Ending2 />} > </Route>
+        <Route exact path="/end3" element={<Ending3 />} > </Route>
 
         <Route exact path="/msg1" element={<Message1 />} > </Route>
         <Route exact path="/msg2" element={<Message2 />} > </Route>

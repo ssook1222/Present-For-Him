@@ -182,7 +182,6 @@ function Square() {
                                     </Button>
                                 </Row>
                             )}
-
                         </div>
                     )}
                 </Modal.Body>

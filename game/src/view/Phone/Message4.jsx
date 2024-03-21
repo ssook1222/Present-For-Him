@@ -38,7 +38,7 @@ function Message() {
     };
 
     const handleNoClick = () => {
-        navigate("/msg4");
+        navigate("/ed2");
     };
 
     const handleFinalYesClick = () => {

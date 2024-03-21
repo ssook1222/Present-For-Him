@@ -24,7 +24,6 @@ function Message() {
         navigate("/Ghm")
     };
 
-
     // 초기 말풍선 데이터
     const initialBalloons = {
         data: [
