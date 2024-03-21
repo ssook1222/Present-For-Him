@@ -69,6 +69,11 @@ function Duck() {
         navigate("/end3");
     };
 
+    const handleFinalClick = () => {
+        // Implement your logic here
+        navigate("/real-end");
+    };
+
     return (
         <>
             <div style={{
@@ -143,6 +148,18 @@ function Duck() {
                                         onClick={handleContinueClick}
                                     > 다른 곳도 가 본다. </Button>
                                 </Row>
+                            }
+
+                            {
+                                moves.length === 6 && (
+                                    <Row style={{ margin: "auto", width: "100%", marginTop: "5%" }}>
+                                        <Button
+                                            variant="light"
+                                            style={{ textAlign: "center", width: "100%", marginTop: "2%", display: "block", margin: "auto" }}
+                                            onClick={handleFinalClick}
+                                        > 고개를 들어 보니 눈 앞에 그녀가 서 있었다! </Button>
+                                    </Row>
+                                )
                             }
                         </>
                     )}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Row, Modal } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
 
@@ -10,6 +10,12 @@ function Square() {
     const [moves, setMoves] = useState([]);
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        // 컴포넌트가 처음으로 렌더링될 때 moves 배열의 길이를 가져옴
+        const initialMoves = JSON.parse(sessionStorage.getItem('moves')) || [];
+        setMoves(initialMoves);
+    }, []); // 빈 배열을 전달하여 컴포넌트가 처음으로 렌더링될 때 한 번만 실행
 
     const goOmokgyo = () => {
         // Add your logic here based on button click
@@ -67,6 +73,11 @@ function Square() {
     const handleQuitClick = () => {
         // Implement your logic here
         navigate("/end3");
+    };
+
+    const handleFinalClick = () => {
+        // Implement your logic here
+        navigate("/real-end");
     };
 
     return (
@@ -127,13 +138,15 @@ function Square() {
                     {!showText && !showOtherChoice && (
                         <>
                             <h5 style={{ textAlign: "center", marginBottom: "5%" }}>그녀의 편지를 다 읽은 나는...</h5>
-                            <Row style={{ margin: "auto", width: "100%", marginTop: "5%" }}>
-                                <Button
-                                    variant="light"
-                                    style={{ textAlign: "center", width: "100%", marginTop: "2%", display: "block", margin: "auto" }}
-                                    onClick={handleQuitClick}
-                                > 더 이상 이동하지 않고<br></br> 그녀에게 문자로 답장한다. </Button>
-                            </Row>
+                            {
+                                moves.length < 6 && <Row style={{ margin: "auto", width: "100%", marginTop: "5%" }}>
+                                    <Button
+                                        variant="light"
+                                        style={{ textAlign: "center", width: "100%", marginTop: "2%", display: "block", margin: "auto" }}
+                                        onClick={handleQuitClick}
+                                    > 더 이상 이동하지 않고<br></br> 그녀에게 문자로 답장한다. </Button>
+                                </Row>
+                            }
 
                             {
                                 moves.length < 6 && (
@@ -143,6 +156,18 @@ function Square() {
                                             style={{ textAlign: "center", width: "100%", marginTop: "2%", display: "block", margin: "auto" }}
                                             onClick={handleContinueClick}
                                         > 다른 곳도 가 본다. </Button>
+                                    </Row>
+                                )
+                            }
+
+                            {
+                                moves.length >= 6 && (
+                                    <Row style={{ margin: "auto", width: "100%", marginTop: "5%" }}>
+                                        <Button
+                                            variant="light"
+                                            style={{ textAlign: "center", width: "100%", marginTop: "2%", display: "block", margin: "auto" }}
+                                            onClick={handleFinalClick}
+                                        > 고개를 들어 보니 눈 앞에 그녀가 서 있었다! </Button>
                                     </Row>
                                 )
                             }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Row, Modal } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
 
@@ -10,6 +10,12 @@ function West() {
     const [moves, setMoves] = useState([]);
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        // 컴포넌트가 처음으로 렌더링될 때 moves 배열의 길이를 가져옴
+        const initialMoves = JSON.parse(sessionStorage.getItem('moves')) || [];
+        setMoves(initialMoves);
+    }, []); // 빈 배열을 전달하여 컴포넌트가 처음으로 렌더링될 때 한 번만 실행
 
     const goOmokgyo = () => {
         // Add your logic here based on button click
@@ -69,6 +75,11 @@ function West() {
         navigate("/end3");
     };
 
+    const handleFinalClick = () => {
+        // Implement your logic here
+        navigate("/real-end");
+    };
+
     return (
         <>
             <div style={{
@@ -107,8 +118,8 @@ function West() {
                         <>
                             <div style={{ padding: "2%" }}>
                                 안녕, 오빠. 우리의 일상과 가장 밀접한 곳을 꼽으라면 서대문역이 아닐까? <br></br>
-                                실제로 나는 서대문역으로 출퇴근을 하고 있기도 하고… 물론 우리 둘 다 근무지는 광화문역 근처이지만 광화문역으로 퇴근한 건 뭔가 손에 꼽을 거 같아. <br></br> 
-                                급하게 어디를 바로 가야 할 때 아닌 이상은 말이지? <br></br> 
+                                실제로 나는 서대문역으로 출퇴근을 하고 있기도 하고… 물론 우리 둘 다 근무지는 광화문역 근처이지만 광화문역으로 퇴근한 건 뭔가 손에 꼽을 거 같아. <br></br>
+                                급하게 어디를 바로 가야 할 때 아닌 이상은 말이지? <br></br>
                                 그래서 전에 오빠한테 크게 실망해서 감정 정리를 해야 했을 때 서대문역으로 출퇴근하면서 이런 저런 생각을 했었거든. <br></br>
                                 특히 우리끼리 장난치면서 부르던 편의점 브랜드나 샌드위치 프랜차이즈 브랜드…를 생각하니까, 오빠는 이미 내 일상 속에 깊이 들어와 있구나 라는 생각이 들었어. <br></br>
                                 그리고 이런 생각을 할 필요도 없이 오빠는 이미 나에게 큰 의미를 가진 존재이고, <br></br>
@@ -129,22 +140,36 @@ function West() {
                     {!showText && !showOtherChoice && (
                         <>
                             <h5 style={{ textAlign: "center", marginBottom: "5%" }}>그녀의 편지를 다 읽은 나는...</h5>
-                            <Row style={{ margin: "auto", width: "100%", marginTop: "5%" }}>
-                                <Button
-                                    variant="light"
-                                    style={{ textAlign: "center", width: "100%", marginTop: "2%", display: "block", margin: "auto" }}
-                                    onClick={handleQuitClick}
-                                > 더 이상 이동하지 않고<br></br> 그녀에게 문자로 답장한다. </Button>
-                            </Row>
+                            {
+                                moves.length < 6 && <Row style={{ margin: "auto", width: "100%", marginTop: "5%" }}>
+                                    <Button
+                                        variant="light"
+                                        style={{ textAlign: "center", width: "100%", marginTop: "2%", display: "block", margin: "auto" }}
+                                        onClick={handleQuitClick}
+                                    > 더 이상 이동하지 않고<br></br> 그녀에게 문자로 답장한다. </Button>
+                                </Row>
+                            }
 
                             {
-                            moves.length < 6 && <Row style={{ margin: "auto", width: "100%", marginTop: "5%" }}>
-                                <Button
-                                    variant="light"
-                                    style={{ textAlign: "center", width: "100%", marginTop: "2%", display: "block", margin: "auto" }}
-                                    onClick={handleContinueClick}
-                                > 다른 곳도 가 본다. </Button>
-                            </Row>
+                                moves.length < 6 && <Row style={{ margin: "auto", width: "100%", marginTop: "5%" }}>
+                                    <Button
+                                        variant="light"
+                                        style={{ textAlign: "center", width: "100%", marginTop: "2%", display: "block", margin: "auto" }}
+                                        onClick={handleContinueClick}
+                                    > 다른 곳도 가 본다. </Button>
+                                </Row>
+                            }
+
+                            {
+                                moves.length >= 6 && (
+                                    <Row style={{ margin: "auto", width: "100%", marginTop: "5%" }}>
+                                        <Button
+                                            variant="light"
+                                            style={{ textAlign: "center", width: "100%", marginTop: "2%", display: "block", margin: "auto" }}
+                                            onClick={handleFinalClick}
+                                        > 고개를 들어 보니 눈 앞에 그녀가 서 있었다! </Button>
+                                    </Row>
+                                )
                             }
                         </>
                     )}
