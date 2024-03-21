@@ -53,6 +53,13 @@ function Square() {
 
     const handleModalNextClick = () => {
         setShowText(false);
+        const moves = JSON.parse(sessionStorage.getItem('moves')) || [];
+        moves.push('광장');
+
+        // 웹 스토리지에 업데이트된 이동 기록 저장
+        sessionStorage.setItem('moves', JSON.stringify(moves));
+        const newMoves = [...moves, '광장'];
+        setMoves(newMoves);
     };
 
     const handleContinueClick = () => {
@@ -161,7 +168,7 @@ function Square() {
                             }
 
                             {
-                                moves.length >= 6 && (
+                                ( moves.includes('서대문역') && moves.includes('솥돈') && moves.includes('현백') && moves.includes('오리배') && moves.includes('유람선') && moves.includes('광장') ) && (
                                     <Row style={{ margin: "auto", width: "100%", marginTop: "5%" }}>
                                         <Button
                                             variant="light"
@@ -177,7 +184,7 @@ function Square() {
                     {showOtherChoice && (
                         <div>
                             <h4 style={{ marginBottom: "2%" }}>어디로 갈까?</h4>
-                            {!moves.includes('서대문') && (
+                            {!moves.includes('서대문역') && (
                                 <Row>
                                     <Button
                                         style={{ "width": "100%", marginBottom: "3%" }}
@@ -194,7 +201,7 @@ function Square() {
                                     <Button
                                         style={{ "width": "100%", marginBottom: "3%" }}
                                         variant="light"
-                                        onClick={{ goOmokgyo }}
+                                        onClick={ goOmokgyo }
                                     >
                                         오목교로 간다
                                     </Button>
@@ -206,7 +213,7 @@ function Square() {
                                     <Button
                                         style={{ "width": "100%", marginBottom: "3%" }}
                                         variant="light"
-                                        onClick={{ goYyd }}
+                                        onClick={ goYyd }
                                     >
                                         여의도로 간다
                                     </Button>

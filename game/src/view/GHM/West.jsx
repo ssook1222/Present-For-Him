@@ -53,6 +53,14 @@ function West() {
 
     const handleModalNextClick = () => {
         setShowText(false);
+        const moves = JSON.parse(sessionStorage.getItem('moves')) || [];
+        // HD를 이동 기록에 추가
+        moves.push('서대문역');
+
+        // 웹 스토리지에 업데이트된 이동 기록 저장
+        sessionStorage.setItem('moves', JSON.stringify(moves));
+        const newMoves = [...moves, '서대문역'];
+        setMoves(newMoves);
     };
 
     const handleContinueClick = () => {
@@ -161,7 +169,7 @@ function West() {
                             }
 
                             {
-                                moves.length >= 6 && (
+                                moves.includes('서대문역') && moves.includes('솥돈') && moves.includes('현백') && moves.includes('오리배') && moves.includes('유람선') && moves.includes('광장') && (
                                     <Row style={{ margin: "auto", width: "100%", marginTop: "5%" }}>
                                         <Button
                                             variant="light"

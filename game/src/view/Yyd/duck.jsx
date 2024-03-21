@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Row, Modal } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
 
@@ -10,6 +10,12 @@ function Duck() {
     const [moves, setMoves] = useState([]);
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        // 컴포넌트가 처음으로 렌더링될 때 moves 배열의 길이를 가져옴
+        const initialMoves = JSON.parse(sessionStorage.getItem('moves')) || [];
+        setMoves(initialMoves);
+    }, []); // 빈 배열을 전달하여 컴포넌트가 처음으로 렌더링될 때 한 번만 실행
 
     const RealTexts = [
         "평일이었으나 운 좋게도 다음 날 공휴일이어서 방문했던 오리배 선착장.",
@@ -47,6 +53,14 @@ function Duck() {
 
     const handleModalNextClick = () => {
         setShowText(false);
+        const moves = JSON.parse(sessionStorage.getItem('moves')) || [];
+        // HD를 이동 기록에 추가
+        moves.push('오리배');
+
+        // 웹 스토리지에 업데이트된 이동 기록 저장
+        sessionStorage.setItem('moves', JSON.stringify(moves));
+        const newMoves = [...moves, '오리배'];
+        setMoves(newMoves);
     };
 
     const handleContinueClick = () => {
@@ -151,7 +165,7 @@ function Duck() {
                             }
 
                             {
-                                moves.length === 6 && (
+                                moves.includes('서대문역') && moves.includes('솥돈') && moves.includes('현백') && moves.includes('오리배') && moves.includes('유람선') && moves.includes('광장') && (
                                     <Row style={{ margin: "auto", width: "100%", marginTop: "5%" }}>
                                         <Button
                                             variant="light"
