@@ -66,6 +66,7 @@ function West() {
 
     const handleQuitClick = () => {
         // Implement your logic here
+        navigate("/end3");
     };
 
     return (
@@ -136,13 +137,15 @@ function West() {
                                 > 더 이상 이동하지 않고<br></br> 그녀에게 문자로 답장한다. </Button>
                             </Row>
 
-                            <Row style={{ margin: "auto", width: "100%", marginTop: "5%" }}>
+                            {
+                            moves.length < 6 && <Row style={{ margin: "auto", width: "100%", marginTop: "5%" }}>
                                 <Button
                                     variant="light"
                                     style={{ textAlign: "center", width: "100%", marginTop: "2%", display: "block", margin: "auto" }}
                                     onClick={handleContinueClick}
                                 > 다른 곳도 가 본다. </Button>
                             </Row>
+                            }
                         </>
                     )}
 

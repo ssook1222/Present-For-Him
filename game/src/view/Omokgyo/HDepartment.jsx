@@ -51,10 +51,10 @@ function HDepartment() {
     const handleContinueClick = () => {
         // 웹 스토리지에서 현재까지의 이동 기록을 가져옴
         const moves = JSON.parse(sessionStorage.getItem('moves')) || [];
-    
+
         // HD를 이동 기록에 추가
         moves.push('현백');
-    
+
         // 웹 스토리지에 업데이트된 이동 기록 저장
         sessionStorage.setItem('moves', JSON.stringify(moves));
         const newMoves = [...moves, '현백'];
@@ -65,6 +65,7 @@ function HDepartment() {
 
     const handleQuitClick = () => {
         // Implement your logic here
+        navigate("/end3");
     };
 
     return (
@@ -132,21 +133,22 @@ function HDepartment() {
                                     onClick={handleQuitClick}
                                 > 더 이상 이동하지 않고<br></br> 그녀에게 문자로 답장한다. </Button>
                             </Row>
-
-                            <Row style={{ margin: "auto", width: "100%", marginTop: "5%" }}>
-                                <Button
-                                    variant="light"
-                                    style={{ textAlign: "center", width: "100%", marginTop: "2%", display: "block", margin: "auto" }}
-                                    onClick={handleContinueClick}
-                                > 다른 곳도 가 본다. </Button>
-                            </Row>
+                            {
+                                moves.length < 6 && <Row style={{ margin: "auto", width: "100%", marginTop: "5%" }}>
+                                    <Button
+                                        variant="light"
+                                        style={{ textAlign: "center", width: "100%", marginTop: "2%", display: "block", margin: "auto" }}
+                                        onClick={handleContinueClick}
+                                    > 다른 곳도 가 본다. </Button>
+                                </Row>
+                            }
                         </>
                     )}
 
                     {showOtherChoice && (
                         <div>
-                            <h4 style={{marginBottom:"2%"}}>어디로 갈까?</h4>
-                            { (!moves.includes('서대문역') || !moves.includes('광장')) && (
+                            <h4 style={{ marginBottom: "2%" }}>어디로 갈까?</h4>
+                            {(!moves.includes('서대문역') || !moves.includes('광장')) && (
                                 <Row>
                                     <Button
                                         style={{ "width": "100%", marginBottom: "3%" }}
@@ -176,7 +178,7 @@ function HDepartment() {
                                         style={{ "width": "100%", marginBottom: "3%" }}
                                         variant="light"
                                         onClick={goYyd}
-                                        
+
                                     >
                                         여의도로 간다
                                     </Button>

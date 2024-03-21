@@ -66,6 +66,7 @@ function Square() {
 
     const handleQuitClick = () => {
         // Implement your logic here
+        navigate("/end3");
     };
 
     return (
@@ -134,13 +135,17 @@ function Square() {
                                 > 더 이상 이동하지 않고<br></br> 그녀에게 문자로 답장한다. </Button>
                             </Row>
 
-                            <Row style={{ margin: "auto", width: "100%", marginTop: "5%" }}>
-                                <Button
-                                    variant="light"
-                                    style={{ textAlign: "center", width: "100%", marginTop: "2%", display: "block", margin: "auto" }}
-                                    onClick={handleContinueClick}
-                                > 다른 곳도 가 본다. </Button>
-                            </Row>
+                            {
+                                moves.length < 6 && (
+                                    <Row style={{ margin: "auto", width: "100%", marginTop: "5%" }}>
+                                        <Button
+                                            variant="light"
+                                            style={{ textAlign: "center", width: "100%", marginTop: "2%", display: "block", margin: "auto" }}
+                                            onClick={handleContinueClick}
+                                        > 다른 곳도 가 본다. </Button>
+                                    </Row>
+                                )
+                            }
                         </>
                     )}
 
@@ -164,7 +169,7 @@ function Square() {
                                     <Button
                                         style={{ "width": "100%", marginBottom: "3%" }}
                                         variant="light"
-                                        onClick={{goOmokgyo}}
+                                        onClick={{ goOmokgyo }}
                                     >
                                         오목교로 간다
                                     </Button>
@@ -176,7 +181,7 @@ function Square() {
                                     <Button
                                         style={{ "width": "100%", marginBottom: "3%" }}
                                         variant="light"
-                                        onClick={{goYyd}}
+                                        onClick={{ goYyd }}
                                     >
                                         여의도로 간다
                                     </Button>
