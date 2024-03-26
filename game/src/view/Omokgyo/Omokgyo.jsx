@@ -39,7 +39,7 @@ function Omokgyo() {
     return (
         <>
             <div style={{
-                backgroundImage: 'url("your-background-image-url.jpg")',
+                backgroundImage: `url("/images/omg.png")`,
                 backgroundSize: "cover",
                 height: "100vh",
                 display: "flex",

@@ -37,7 +37,7 @@ function Ghm() {
     return (
         <>
             <div style={{
-                backgroundImage: 'url("your-background-image-url.jpg")',
+                backgroundImage: `url("/images/ghm.png")`,
                 backgroundSize: "cover",
                 height: "100vh",
                 display: "flex",

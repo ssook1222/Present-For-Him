@@ -42,7 +42,7 @@ function Yyd() {
     return (
         <>
             <div style={{
-                backgroundImage: 'url("your-background-image-url.jpg")',
+                backgroundImage: `url("/images/yyd.png")`,
                 backgroundSize: "cover",
                 height: "100vh",
                 display: "flex",
