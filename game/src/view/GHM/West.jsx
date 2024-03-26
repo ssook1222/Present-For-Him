@@ -91,7 +91,7 @@ function West() {
     return (
         <>
             <div style={{
-                backgroundImage: 'url("your-background-image-url.jpg")',
+                backgroundImage: `url("/images/west.png")`,
                 backgroundSize: "cover",
                 height: "100vh",
                 display: "flex",

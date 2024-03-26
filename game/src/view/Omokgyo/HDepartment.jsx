@@ -90,7 +90,7 @@ function HDepartment() {
     return (
         <>
             <div style={{
-                backgroundImage: 'url("your-background-image-url.jpg")',
+                backgroundImage: `url("/images/hd.png")`,
                 backgroundSize: "cover",
                 height: "100vh",
                 display: "flex",
