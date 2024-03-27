@@ -37,8 +37,8 @@ function Main() {
       </div>
 
       {showButtons && (
-        <Row style={{ width: "30%", justifyContent: "center", marginTop: "3%" }}>
-          <Col>
+        <Row sm = {12} style={{ width: "100%", justifyContent: "center", marginTop: "5%" }}>
+          <Col sm = {6} xs = {6} style={{ marginRight: "0" }}>
             <Button
               variant="dark"
               style={{ padding: "10px", margin: "auto", display: "block" }}
@@ -47,7 +47,7 @@ function Main() {
               예
             </Button>
           </Col>
-          <Col>
+          <Col sm = {6} xs = {6}>
             <Button
               variant="dark"
               style={{ padding: "10px", margin: "auto", display: "block" }}

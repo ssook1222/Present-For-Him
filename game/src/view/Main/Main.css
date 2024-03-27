@@ -25,4 +25,9 @@
       opacity: 0;
     }
   }
-  
+
+  @media screen and (max-width: 600px) {
+    .blinking-text {
+      font-size: 1.5rem;
+    }
+  }
