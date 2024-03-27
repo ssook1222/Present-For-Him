@@ -1,0 +1,12 @@
+@media screen and (max-width: 600px) {
+    .end-text {
+      width: 100%;
+      padding-right: 5%;
+      font-size: 0.8rem;
+    }
+
+    .end-bt{
+        width: 30%;
+        font-size: 0.7rem;
+    }
+  }

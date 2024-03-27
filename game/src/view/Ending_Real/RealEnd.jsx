@@ -2,6 +2,8 @@ import React, { useState }  from "react";
 import { Button, Row, Modal } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
 
+import '../../../src/view/Ending.css'
+
 function RealEnd() {
     // 도메인은 real-end으로 
     const [communicationTextIndex, setCommunicationTextIndex] = useState(0);
@@ -58,7 +60,7 @@ function RealEnd() {
                     padding: "10px",
                     borderRadius: "5px"
                 }}>
-                    <div style={{ color: "black", paddingLeft: "10px" }}>{RealTexts[communicationTextIndex]}</div>
+                    <div className="end-text" style={{ color: "black", paddingLeft: "10px" }}>{RealTexts[communicationTextIndex]}</div>
                     <Button
                         variant="dark"
                         style={{ padding: "10px 20px", borderRadius: "5px" }}

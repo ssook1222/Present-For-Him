@@ -1,6 +1,8 @@
-import React, { useState }  from "react";
+import React, { useState } from "react";
 import { Button, Row, Modal } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
+
+import '../../../src/view/Ending.css'
 
 function Ending3() {
     // 도메인은 end3으로 
@@ -57,19 +59,22 @@ function Ending3() {
                     padding: "10px",
                     borderRadius: "5px"
                 }}>
-                    <div style={{ color: "black", paddingLeft: "10px" }}>{RealTexts[communicationTextIndex]}</div>
+                    <div
+                        className="end-text"
+                        style={{ color: "black", paddingLeft: "10px" }}>{RealTexts[communicationTextIndex]}</div>
                     <Button
+                        className="end-bt"
                         variant="dark"
                         style={{ padding: "10px 20px", borderRadius: "5px" }}
                         onClick={handleNextClick}
                     >
-                        다음
+                        →
                     </Button>
                 </div>
             </div>
 
             <Modal show={showModal} onHide={() => setShowModal(false)} centered>
-                <Modal.Body style={{ margin: "auto" , width: "100%", marginTop: "50%", marginBottom:"50%"}}>
+                <Modal.Body style={{ margin: "auto", width: "100%", marginTop: "50%", marginBottom: "50%" }}>
                     {showText && (
                         <>
                             <div style={{ padding: "2%", width: "100%", textAlign: "center" }}>

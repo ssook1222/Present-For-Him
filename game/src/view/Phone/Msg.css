@@ -1,0 +1,9 @@
+@media screen and (max-width: 600px) {
+    .modalText {
+      font-size: 0.8rem;
+    }
+
+    .msgModal {
+        width : 80% !important;
+    }
+  }

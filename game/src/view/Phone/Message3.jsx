@@ -65,7 +65,7 @@ function Message() {
             } else if (id === balloons.data.length - 1) {
                 // 클릭한 말풍선이 마지막 말풍선일 때 
                 return { ...balloon, visible: true };
-            } 
+            }
             else {
                 return { ...balloon, visible: false };
             }
@@ -77,9 +77,9 @@ function Message() {
         if (modalIndex < modalTexts.length - 1) {
             setModalIndex(prevIndex => prevIndex + 1);
         }
-        else if (modalIndex === modalTexts.length - 1){
+        else if (modalIndex === modalTexts.length - 1) {
             handleNextClick();
-        } 
+        }
         else {
             setShowModal(false);
             setModalIndex(0);
@@ -126,14 +126,16 @@ function Message() {
                     justifyContent: 'center',
                     alignItems: 'center',
                 }}>
-                    <div style={{
-                        width: "50%",
-                        backgroundColor: 'white',
-                        padding: '20px',
-                        borderRadius: '10px',
-                        textAlign: 'center',
-                    }}>
-                        <p>{modalTexts[modalIndex]}</p>
+                    <div
+                        class="msgModal"
+                        style={{
+                            width: "50%",
+                            backgroundColor: 'white',
+                            padding: '20px',
+                            borderRadius: '10px',
+                            textAlign: 'center',
+                        }}>
+                        <p class="modalText">{modalTexts[modalIndex]}</p>
                         <Button
                             style={{ fontSize: "80%" }}
                             variant="light"

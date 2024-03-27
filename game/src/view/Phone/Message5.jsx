@@ -10,7 +10,6 @@ function Message() {
     const navigate = useNavigate();
 
     const handleNextClick = () => {
-        // Add your logic here based on button click
         navigate("/msg5")
     };
 
@@ -22,6 +21,10 @@ function Message() {
     const goGhm = () => {
         // Add your logic here based on button click
         navigate("/Ghm")
+    };
+
+    const goYyd = () => {
+        navigate("/Yyd")
     };
 
     // 초기 말풍선 데이터
@@ -39,7 +42,6 @@ function Message() {
         "이럴수가.",
         "너무 나에 대한 믿음이 강한 거 아냐? ",
         "해당 문자를 끝으로 더 이상 그녀에게서 연락이 오지 않는 것을 확인한 나는…",
-
     ];
 
     // 말풍선 상태 및 가시성 변경 함수
@@ -86,7 +88,7 @@ function Message() {
             setModalIndex(prevIndex => prevIndex + 1);
         }
         else if (modalIndex === modalTexts.length - 1) {
-            handleNextClick();
+            // handleNextClick();
         }
         else {
             setShowModal(false);
@@ -134,14 +136,16 @@ function Message() {
                     justifyContent: 'center',
                     alignItems: 'center',
                 }}>
-                    <div style={{
+                    <div 
+                        class="msgModal"
+                        style={{
                         width: "50%",
                         backgroundColor: 'white',
                         padding: '20px',
                         borderRadius: '10px',
                         textAlign: 'center',
                     }}>
-                        <p>{modalTexts[modalIndex]}</p>
+                        <p class="modalText">{modalTexts[modalIndex]}</p>
                         <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
                             {
                                 modalIndex < modalTexts.length - 1 &&
@@ -178,6 +182,7 @@ function Message() {
                                         <Button 
                                             style={{"width": "100%"}}
                                             variant="light"
+                                            onClick={goYyd}
                                         >
                                             여의도로 간다
                                         </Button>

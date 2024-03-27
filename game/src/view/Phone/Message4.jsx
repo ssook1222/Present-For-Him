@@ -141,14 +141,16 @@ function Message() {
                     justifyContent: 'center',
                     alignItems: 'center',
                 }}>
-                    <div style={{
+                    <div
+                    class="msgModal" 
+                    style={{
                         width: "50%",
                         backgroundColor: 'white',
                         padding: '20px',
                         borderRadius: '10px',
                         textAlign: 'center',
                     }}>
-                        <p>{modalText}</p>
+                        <p class="modalText">{modalText}</p>
                         {showNextButton && (
                             <Button
                                 style={{ fontSize: "80%" }}

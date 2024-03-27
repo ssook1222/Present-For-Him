@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
 
+import './Msg.css'
 function Message() {
     const [containerHeight, setContainerHeight] = useState(0);
     const [showModal, setShowModal] = useState(false);
@@ -12,7 +13,7 @@ function Message() {
     const handleNextClick = () => {
         // Add your logic here based on button click
         navigate("/msg2")
-      };
+    };
 
     // 초기 말풍선 데이터
     const initialBalloons = {
@@ -34,7 +35,7 @@ function Message() {
 
     // 말풍선 상태 및 가시성 변경 함수
     const [balloons, setBalloons] = useState(initialBalloons);
-    
+
     useEffect(() => {
         // 컨테이너의 높이를 말풍선 위치에 따라 동적으로 조정
         const maxHeight = Math.max(
@@ -60,7 +61,7 @@ function Message() {
                 return { ...balloon, visible: true };
             } else if (index < id && index < balloons.data.length - 1) {
                 return { ...balloon, visible: true };
-            } else if (id === balloons.data.length - 1 ) {
+            } else if (id === balloons.data.length - 1) {
                 // 클릭한 말풍선이 마지막 말풍선일 때 
                 return { ...balloon, visible: true };
             } else {
@@ -73,8 +74,8 @@ function Message() {
     const handleNextModal = () => {
         if (modalIndex < modalTexts.length - 1) {
             setModalIndex(prevIndex => prevIndex + 1);
-        } 
-        else if (modalIndex === modalTexts.length - 1){
+        }
+        else if (modalIndex === modalTexts.length - 1) {
             handleNextClick();
         }
         else {
@@ -84,7 +85,7 @@ function Message() {
     };
 
     return (
-        <div style={{ height: "100vh", backgroundColor: "black"}}>
+        <div style={{ height: "100vh", backgroundColor: "black" }}>
             <div style={{ padding: "20px", position: "relative", height: containerHeight }}>
                 {balloons.data.map((balloon) => (
                     <div key={balloon.id}>
@@ -123,17 +124,19 @@ function Message() {
                     justifyContent: 'center',
                     alignItems: 'center',
                 }}>
-                    <div style={{
-                        width:"50%",
-                        backgroundColor: 'white',
-                        padding: '20px',
-                        borderRadius: '10px',
-                        textAlign: 'center',
-                    }}>
-                        <p>{modalTexts[modalIndex]}</p>
+                    <div
+                        class="msgModal"
+                        style={{
+                            width: "50%",
+                            backgroundColor: 'white',
+                            padding: '20px',
+                            borderRadius: '10px',
+                            textAlign: 'center',
+                        }}>
+                        <p class="modalText">{modalTexts[modalIndex]}</p>
                         <Button
-                            style={{fontSize:"80%"}}
-                            variant="light" 
+                            style={{ fontSize: "80%" }}
+                            variant="light"
                             onClick={handleNextModal}>
                             {modalIndex < modalTexts.length - 1 ? '다음' : '닫기'}
                         </Button>

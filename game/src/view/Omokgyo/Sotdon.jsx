@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Button, Row, Modal } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
 
+import '../../../src/view/Ending.css'
+
 function Sotdon() {
     const [communicationTextIndex, setCommunicationTextIndex] = useState(0);
     const [showModal, setShowModal] = useState(false);
@@ -110,7 +112,7 @@ function Sotdon() {
                     padding: "10px",
                     borderRadius: "5px"
                 }}>
-                    <div style={{ color: "#fff", paddingLeft: "10px" }}>{RealTexts[communicationTextIndex]}</div>
+                    <div className="end-text" style={{ color: "#fff", paddingLeft: "10px" }}>{RealTexts[communicationTextIndex]}</div>
                     <Button
                         variant="dark"
                         style={{ padding: "10px 20px", borderRadius: "5px" }}
@@ -147,7 +149,7 @@ function Sotdon() {
                         <>
                             <h5 style={{ textAlign: "center", marginBottom: "5%" }}>그녀의 편지를 다 읽은 나는...</h5>
                             {
-                                moves.length < 6 && <Row style={{ margin: "auto", width: "100%", marginTop: "5%" }}>
+                                !(moves.includes('서대문역') && moves.includes('솥돈') && moves.includes('현백') && moves.includes('오리배') && moves.includes('유람선') && moves.includes('광장')) && <Row style={{ margin: "auto", width: "100%", marginTop: "5%" }}>
                                     <Button
                                         variant="light"
                                         style={{ textAlign: "center", width: "100%", marginTop: "2%", display: "block", margin: "auto" }}
@@ -156,7 +158,7 @@ function Sotdon() {
                                 </Row>
                             }
 
-                            {moves.length < 6 && <Row style={{ margin: "auto", width: "100%", marginTop: "5%" }}>
+                            {!(moves.includes('서대문역') && moves.includes('솥돈') && moves.includes('현백') && moves.includes('오리배') && moves.includes('유람선') && moves.includes('광장')) && <Row style={{ margin: "auto", width: "100%", marginTop: "5%" }}>
                                 <Button
                                     variant="light"
                                     style={{ textAlign: "center", width: "100%", marginTop: "2%", display: "block", margin: "auto" }}
