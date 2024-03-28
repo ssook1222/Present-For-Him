@@ -43,7 +43,8 @@ function RealEnd() {
     return (
         <>
             <div style={{
-                backgroundColor: "#FFE3EE",
+                backgroundImage: `url("/images/real-end.png")`,
+                backgroundSize: "cover",
                 height: "100vh",
                 display: "flex",
                 justifyContent: "flex-end",
@@ -51,7 +52,7 @@ function RealEnd() {
                 padding: "20px",
             }}>
                 <div style={{
-                    backgroundColor: "rgba(255, 255, 255, 0.5)",
+                    backgroundColor: "rgba(0, 0, 0, 0.7)",
                     width: "100%",
                     height: "30%",
                     display: "flex",
@@ -60,7 +61,7 @@ function RealEnd() {
                     padding: "10px",
                     borderRadius: "5px"
                 }}>
-                    <div className="end-text" style={{ color: "black", paddingLeft: "10px" }}>{RealTexts[communicationTextIndex]}</div>
+                    <div className="end-text" style={{ color: "white", paddingLeft: "10px" }}>{RealTexts[communicationTextIndex]}</div>
                     <Button
                         variant="dark"
                         style={{ padding: "10px 20px", borderRadius: "5px" }}

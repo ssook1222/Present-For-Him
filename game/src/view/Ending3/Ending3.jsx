@@ -81,7 +81,7 @@ function Ending3() {
                                 <h4>Normal Ending</h4>
                                 <hr></hr>
                                 <h5>끈기가 조금만 더 있었더라면...!</h5>
-                                {/* 이미지 따로 넣기 */}
+
                                 <image></image>
                             </div>
                             <br></br>
