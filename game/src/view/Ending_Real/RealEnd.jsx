@@ -77,7 +77,7 @@ function RealEnd() {
                     {showText && (
                         <>
                             <div style={{ padding: "2%", width: "100%", textAlign: "center" }}>
-                                <h4>Normal Ending</h4>
+                                <h4>Real Ending</h4>
                                 <hr></hr>
                                 <h5>총총이는 곰곰이를 사랑해💗</h5>
                                 {/* 이미지 따로 넣기 */}
